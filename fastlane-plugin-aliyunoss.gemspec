@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'xingyigua@gmail.com'
 
   spec.summary       = 'upload package to aliyunoss'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-aliyunoss"
+  spec.homepage      = "https://github.com/xingyigua/fastlane-plugin-aliyunoss"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
