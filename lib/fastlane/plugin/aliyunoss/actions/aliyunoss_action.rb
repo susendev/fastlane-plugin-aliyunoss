@@ -12,6 +12,7 @@ module Fastlane
         access_key_id = params[:access_key_id]
         access_key_secret = params[:access_key_secret]
         bucket_name = params[:bucket_name]
+        bucket_dir_path = params[:bucket_dir_path]
 
         ipa = params[:ipa]
         archive = params[:archive]
@@ -30,15 +31,15 @@ module Fastlane
         bucket = client.get_bucket(bucket_name)
 
         UI.message "upload ipa: #{ipa}"
-        bucket.put_object("ios/#{now}/#{File.basename(ipa)}", :file => "#{ipa}")
+        bucket.put_object("#{bucket_dir_path}/#{now}/#{File.basename(ipa)}", :file => "#{ipa}")
         UI.message "upload ipa done"
 
         UI.message "upload archive: #{backup_archive}"
-        bucket.put_object("ios/#{now}/#{File.basename(backup_archive)}", :file => "#{backup_archive}")
+        bucket.put_object("#{bucket_dir_path}/#{now}/#{File.basename(backup_archive)}", :file => "#{backup_archive}")
         UI.message "upload archive done"
 
         UI.message "upload dsym: #{dsym}"
-        bucket.put_object("ios/#{now}/#{File.basename(dsym)}", :file => "#{dsym}")
+        bucket.put_object("#{bucket_dir_path}/#{now}/#{File.basename(dsym)}", :file => "#{dsym}")
         UI.message "upload dsym done"
 
         UI.message("The aliyunoss plugin done")
@@ -78,6 +79,10 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :bucket_name,
             env_name: "bucket_name",
             description: "",
+            optional: false),
+          FastlaneCore::ConfigItem.new(key: :bucket_dir_path,
+            env_name: "bucket_dir_path",
+            description: "Storage directory for files",
             optional: false),
           FastlaneCore::ConfigItem.new(key: :ipa,
             env_name: "ipa",
