@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   # Don't add a dependency to fastlane or fastlane_re
   # since this would cause a circular dependency
 
-  # spec.add_dependency 'your-dependency', '~> 1.0.0'
+  spec.add_dependency 'aliyun-sdk', '>=0.6.0'
 
   spec.add_development_dependency('bundler')
   spec.add_development_dependency('fastlane', '>= 2.187.0')
@@ -33,5 +33,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('rubocop-performance')
   spec.add_development_dependency('rubocop-require_tools')
   spec.add_development_dependency('simplecov')
-  spec.add_development_dependency('aliyun-sdk', '>=0.6.0')
 end
